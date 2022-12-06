@@ -5,8 +5,16 @@ Variables
 */
 
 :root {
-  --clr-black: hsl(0, 0%, 0%);
-  --clr-white: hsl(0, 0%, 100%);
+  --clr-grey-01: hsl(209, 61%, 16%);
+  --clr-grey-02: hsl(211, 39%, 23%);
+  --clr-grey-03: hsl(209, 34%, 30%);
+  --clr-grey-04: hsl(209, 28%, 39%);
+  --clr-grey-05: hsl(210, 22%, 49%);
+  --clr-grey-06: hsl(209, 23%, 60%);
+  --clr-grey-07: hsl(211, 27%, 70%);
+  --clr-grey-08: hsl(210, 31%, 80%);
+  --clr-grey-09: hsl(212, 33%, 89%);
+  --clr-grey-10: hsl(210, 36%, 96%);
 
   --clr-primary-01: hsl(205, 86%, 17%);
   --clr-primary-02: hsl(205, 77%, 27%);
@@ -19,28 +27,19 @@ Variables
   --clr-primary-09: hsl(205, 90%, 88%);
   --clr-primary-10: hsl(205, 100%, 96%);
 
-  --clr-grey-01: hsl(209, 61%, 16%);
-  --clr-grey-02: hsl(211, 39%, 23%);
-  --clr-grey-03: hsl(209, 34%, 30%);
-  --clr-grey-04: hsl(209, 28%, 39%);
-  --clr-grey-05: hsl(210, 22%, 49%);
-  --clr-grey-06: hsl(209, 23%, 60%);
-  --clr-grey-07: hsl(211, 27%, 70%);
-  --clr-grey-08: hsl(210, 31%, 80%);
-  --clr-grey-09: hsl(212, 33%, 89%);
-  --clr-grey-10: hsl(210, 36%, 96%);
+  --clr-orange-01: hsl(13, 73%, 16%);
+  --clr-orange-02: hsl(13, 73%, 25%);
+  --clr-orange-03: hsl(13, 74%, 33%);
+  --clr-orange-04: hsl(13, 74%, 49%);
+  --clr-orange-05: hsl(13, 88%, 55%);
+  --clr-orange-06: hsl(13, 88%, 68%);
+  --clr-orange-07: hsl(13, 87%, 82%);
+  --clr-orange-08: hsl(12, 89%, 89%);
+  --clr-orange-09: hsl(14, 91%, 95%);
+  --clr-orange-10: hsl(12, 83%, 98%);
 
-  --clr-orange-01: hsl(12, 83%, 98%);
-  --clr-orange-02: hsl(14, 91%, 95%);
-  --clr-orange-03: hsl(12, 89%, 89%);
-  --clr-orange-04: hsl(13, 87%, 82%);
-  --clr-orange-05: hsl(13, 88%, 68%);
-  --clr-orange-06: hsl(13, 88%, 55%);
-  --clr-orange-07: hsl(13, 74%, 49%);
-  --clr-orange-08: hsl(13, 74%, 33%);
-  --clr-orange-09: hsl(13, 73%, 25%);
-  --clr-orange-10: hsl(13, 73%, 16%);
-
+  --clr-black: hsl(0, 0%, 0%);
+  --clr-white: hsl(0, 0%, 100%);
   --clr-red-dark: hsl(360, 67%, 44%);
   --clr-red-light: hsl(360, 71%, 66%);
   --clr-green-dark: hsl(125, 67%, 44%);
