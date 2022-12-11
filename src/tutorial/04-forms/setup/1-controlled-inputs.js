@@ -1,12 +1,60 @@
 import React, { useState } from 'react';
-// JS
-// const input = document.getElementById('myText');
-// const inputValue = input.value
-// React
-// value, onChange
 
 const ControlledInputs = () => {
-  return <h1>controlled inputs</h1>;
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [list, setList] = useState([]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (name && email) {
+      const person = { id: new Date().getTime().toString(), name, email };
+      setList(() => {
+        return [person];
+      });
+    }
+  };
+
+  return (
+    <>
+      <form className="form" onSubmit={handleSubmit}>
+        <div className="form-control">
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+        </div>
+        <div className="form-control">
+          <label htmlFor="email">Email</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+        </div>
+        <button className="btn">Submit</button>
+      </form>
+      {list.map((item) => {
+        const { id, name, email } = item;
+        return (
+          <div className="item" key={id}>
+            <h4>{name}</h4>
+            <a href={`mailto:${email}`}>{email}</a>
+          </div>
+        );
+      })}
+    </>
+  );
 };
 
 export default ControlledInputs;
