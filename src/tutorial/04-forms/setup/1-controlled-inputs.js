@@ -8,44 +8,31 @@ const ControlledInputs = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name && email) {
-      const person = { id: new Date().getTime().toString(), name, email };
-      setList((currentListItem) => {
-        return [...currentListItem, person];
+      const newitem = { id: new Date().getTime().toString(), name, email };
+      setList((list) => {
+        return [...list, newitem];
       });
+      setName('');
+      setEmail('');
     }
   };
 
   return (
-    <>
+    <article>
+      <h1>React Form Controls</h1>
       <form className="form" onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          />
+          <input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div className="form-control">
           <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
+          <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
-        <button className="btn">Submit</button>
+        <button>Submit</button>
       </form>
-      {list.map((item) => {
-        const { id, name, email } = item;
+      {list.map((listitem) => {
+        const { id, name, email } = listitem;
         return (
           <div className="item" key={id}>
             <h4>{name}</h4>
@@ -53,7 +40,7 @@ const ControlledInputs = () => {
           </div>
         );
       })}
-    </>
+    </article>
   );
 };
 
