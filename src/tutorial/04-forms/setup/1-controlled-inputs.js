@@ -9,8 +9,8 @@ const ControlledInputs = () => {
     e.preventDefault();
     if (name && email) {
       const person = { id: new Date().getTime().toString(), name, email };
-      setList(() => {
-        return [person];
+      setList((currentListItem) => {
+        return [...currentListItem, person];
       });
     }
   };
