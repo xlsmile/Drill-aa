@@ -3,10 +3,16 @@ import Modal from './Modal';
 import { data } from '../../../data';
 
 const reducer = (state, action) => {
-  if (action.type === 'TESTING') {
-    return { ...state, users: data, isModalOpen: true, modalContent: 'Modal is Open!' };
+  switch (action.type) {
+    case 'TESTING':
+      return { ...state, users: data, isModalOpen: true, modalContent: 'Modal is Open!' };
+    default:
+      return state;
   }
-  return state;
+  // if (action.type === 'TESTING') {
+  //   return { ...state, users: data, isModalOpen: true, modalContent: 'Modal is Open!' };
+  // }
+  // return state;
 };
 
 const defaultState = {
