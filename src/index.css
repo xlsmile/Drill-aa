@@ -232,6 +232,7 @@ p {
 }
 
 .modal {
+  animation: fadein 3000ms linear;
   background: var(--clr-white);
   color: var(--clr-black);
   display: inline-block;
@@ -240,6 +241,7 @@ p {
   margin: 0.8em 1.2em 3.6em;
   border-radius: var(--radius);
   text-transform: capitalize;
+  /* opacity: 1; */
 }
 
 .modal p {
@@ -373,4 +375,15 @@ p {
   padding: 0.4rem 0.8rem;
   text-transform: capitalize;
   cursor: pointer;
+}
+
+@keyframes fadein {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  35%,
+  80% {
+    opacity: 1;
+  }
 }

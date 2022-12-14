@@ -6,8 +6,14 @@ const reducer = (stateBeforeUpdate, action) => {
   switch (action.type) {
     case 'ADD_USER':
       const newUsers = [...stateBeforeUpdate.users, action.payload];
-      return { ...stateBeforeUpdate, users: newUsers, isModalOpen: true, modalContent: 'User Added.' };
-    // the updated state has been returned here
+      return { ...stateBeforeUpdate, users: newUsers, modalOpen: true, modalContent: 'User Added.' };
+    case 'NO_VALUE':
+      return { ...stateBeforeUpdate, modalOpen: true, modalContent: 'Please, provide user name.' };
+    case 'CLOSE_MODAL':
+      return { ...stateBeforeUpdate, modalOpen: false };
+    case 'REMOVE_USER':
+      const newUser = stateBeforeUpdate.users.filter((user) => user.id !== action.payload);
+      return { ...stateBeforeUpdate, users: newUser };
     default:
       return stateBeforeUpdate;
   }
@@ -15,7 +21,7 @@ const reducer = (stateBeforeUpdate, action) => {
 
 const initState = {
   users: [],
-  isModalOpen: false,
+  modalOpen: false,
   modalContent: '',
 };
 
@@ -29,13 +35,19 @@ const Index = () => {
       const newUser = { id: new Date().getTime().toString(), name };
       dispatchAction({ type: 'ADD_USER', payload: newUser });
       setName('');
+    } else {
+      dispatchAction({ type: 'NO_VALUE' });
     }
+  };
+
+  const closeModal = () => {
+    dispatchAction({ type: 'CLOSE_MODAL' });
   };
 
   return (
     <>
       <h1>Add User with Reducer</h1>
-      {updatedState.isModalOpen && <Modal modalContent={updatedState.modalContent} />}
+      {updatedState.modalOpen && <Modal modalContent={updatedState.modalContent} closeModal={closeModal} />}
       <form className="form" onSubmit={handleSubmit}>
         <div>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -49,7 +61,8 @@ const Index = () => {
         const { id, name } = user;
         return (
           <div className="item" key={id}>
-            <h4>{name}</h4>
+            <h4>User Name: {name}</h4>
+            <button onClick={() => dispatchAction({ type: 'REMOVE_USER', payload: id })}>Remove user</button>
           </div>
         );
       })}
