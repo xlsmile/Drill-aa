@@ -208,6 +208,7 @@ p {
   justify-content: space-between;
   max-width: var(--fixed-width);
   margin: 2rem auto;
+  padding: 1.6em 2.4em;
   align-items: center;
   border-radius: var(--radius);
 }
@@ -219,10 +220,6 @@ p {
   color: var(--clr-primary-05);
   letter-spacing: var(--spacing);
   cursor: pointer;
-}
-
-.item {
-  padding: 1.2rem 2rem;
 }
 
 .item h4 {

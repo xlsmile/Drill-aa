@@ -1,22 +1,19 @@
 import React, { useState, useReducer } from 'react';
 import Modal from './Modal';
-import { data } from '../../../data';
+// import { data } from '../../../data';
 
-const reducer = (state, action) => {
+const reducer = (stateBeforeUpdate, action) => {
   switch (action.type) {
-    case 'TESTING':
-      return { ...state, users: data, isModalOpen: true, modalContent: 'Modal is Open!' };
+    case 'ADD_USER':
+      const newUsers = [...stateBeforeUpdate.users, action.payload];
+      return { ...stateBeforeUpdate, users: newUsers, isModalOpen: true, modalContent: 'User Added.' };
+    // the updated state has been returned here
     default:
-      return state;
+      return stateBeforeUpdate;
   }
-  // if (action.type === 'TESTING') {
-  //   return { ...state, users: data, isModalOpen: true, modalContent: 'Modal is Open!' };
-  // }
-  // return state;
 };
 
-const defaultState = {
-  id: new Date().getTime().toString(),
+const initState = {
   users: [],
   isModalOpen: false,
   modalContent: '',
@@ -24,20 +21,21 @@ const defaultState = {
 
 const Index = () => {
   const [name, setName] = useState('');
-  const [state, dispatch] = useReducer(reducer, defaultState);
+  const [updatedState, dispatchAction] = useReducer(reducer, initState);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name) {
-      dispatch({ type: 'TESTING' });
-    } else {
+      const newUser = { id: new Date().getTime().toString(), name };
+      dispatchAction({ type: 'ADD_USER', payload: newUser });
+      setName('');
     }
   };
 
   return (
     <>
-      <h1>Use Reducer</h1>
-      {state.isModalOpen && <Modal modalContent={state.modalContent} />}
+      <h1>Add User with Reducer</h1>
+      {updatedState.isModalOpen && <Modal modalContent={updatedState.modalContent} />}
       <form className="form" onSubmit={handleSubmit}>
         <div>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -46,10 +44,12 @@ const Index = () => {
           Add user
         </button>
       </form>
-      {state.users.map((user) => {
+
+      {updatedState.users.map((user) => {
+        // console.log('New User', user);
         const { id, name } = user;
         return (
-          <div key={id}>
+          <div className="item" key={id}>
             <h4>{name}</h4>
           </div>
         );
