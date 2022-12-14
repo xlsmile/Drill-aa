@@ -46,7 +46,6 @@ const Index = () => {
       </form>
 
       {updatedState.users.map((user) => {
-        // console.log('New User', user);
         const { id, name } = user;
         return (
           <div className="item" key={id}>
